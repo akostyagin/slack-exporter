@@ -33,6 +33,22 @@ There are two ways to use `slack-exporter` (detailed below). Both require a Slac
     ```
 
 2. Run `python exporter.py --help` to view the available export options.
+3. Do your desired export. Examples:
+
+to export conversation list, user list and all user accessible conversations with all reply threads: 
+
+```shell script
+python3 ./exporter.py --lc --lu -c -r -o ./exports
+```
+
+to export conversation list, user list, all user private channels and all user direct message channels with all reply threads in these channels:
+
+```shell script 
+./dump_private.sh
+```
+
+(be patient with slack server query rate-limits caused pauses)
+
 
 ### As a Slack bot
 
