@@ -489,7 +489,7 @@ if __name__ == "__main__":
         if a.ch:
             channel_ids = a.ch.split(',')
         else:
-            channels_ids = [x["id"] for x in ch_list]
+            channel_ids = [x["id"] for x in ch_list]
         for ch_id in channel_ids:
             ch_hist = channel_history(ch_id, oldest=a.fr, latest=a.to)
             save_channel(ch_hist, ch_id, ch_list, user_list)
