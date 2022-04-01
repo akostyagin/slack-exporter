@@ -486,14 +486,13 @@ if __name__ == "__main__":
         data = user_list if a.json else parse_user_list(user_list)
         save(data, "user_list")
     if a.c:
-        ch_id = a.ch
-        if ch_id:
+        if a.ch:
+            channel_ids = a.ch.split(',')
+        else:
+            channels_ids = [x["id"] for x in ch_list]
+        for ch_id in channel_ids:
             ch_hist = channel_history(ch_id, oldest=a.fr, latest=a.to)
             save_channel(ch_hist, ch_id, ch_list, user_list)
-        else:
-            for ch_id in [x["id"] for x in ch_list]:
-                ch_hist = channel_history(ch_id, oldest=a.fr, latest=a.to)
-                save_channel(ch_hist, ch_id, ch_list, user_list)
     # elif, since we want to avoid asking for channel_history twice
     elif a.r:
         for ch_id in [x["id"] for x in channel_list()]:
