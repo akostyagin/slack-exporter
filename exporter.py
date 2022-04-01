@@ -63,7 +63,7 @@ def get_data(url, params):
         else:
             retry_after = int(r.headers["Retry-After"])  # seconds to wait
             sleep_time = retry_after + ADDITIONAL_SLEEP_TIME
-            print(f"Rate-limited. Retrying after {sleep_time} seconds ({attempt}x).")
+            print(f"Rate-limited. Retrying get {url}[{params}] after {sleep_time} seconds ({attempt}x).")
             sleep(sleep_time)
     return r
 
